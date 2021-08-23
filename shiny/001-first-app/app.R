@@ -16,54 +16,56 @@ library(shinythemes)
 
 
   # Define UI
-  ui <- fluidPage(theme = shinytheme("cerulean"),
-    navbarPage(
-      # theme = "cerulean",  # <--- To use a theme, uncomment this
-      "My first app",
-      tabPanel("Navbar 1",
-               sidebarPanel(
-                 tags$h3("Input:"),
-                 textInput("txt1", "Given Name:", ""),
-                 textInput("txt2", "Surname:", ""),
-                 
-               ), # sidebarPanel
-               mainPanel(
-                            h1("Header 1"),
-                            
-                            h4("Output 1"),
-                            verbatimTextOutput("txtout"),
-
-               ) # mainPanel
-               
-      ), # Navbar 1, tabPanel
-      tabPanel("Navbar 2",
-               
-              sidebarPanel(
-        tags$h3("Input:"),
-        textInput("txt1", "Given Name:", "abc"),
-        textInput("txt2", "Surname:", "xyz"),
-        
-      ), # sidebarPanel
-      mainPanel(
-        h1("Header 1"),
-        
-        h4("Output 1"),
-        verbatimTextOutput("txtout"),
-        
-      )
-      ), # mainPanel
-      
-      tabPanel("Navbar 3", "This panel is intentionally left blank"),
+ui <- fluidPage(theme = shinytheme("cerulean"),
+navbarPage(
+  # theme = "cerulean",  # <--- To use a theme, uncomment this
+  "My first app",
+  tabPanel("Navbar 1",
+           sidebarPanel(
+             tags$h3("Input:"),
+             textInput("txt1", "Given Name:", ""),
+             textInput("txt2", "Surname:", ""),
+             
+           ), # sidebarPanel
+           mainPanel(
+             h1("Header 1"),
+             
+             h4("Output 1"),
+             verbatimTextOutput("txtout"),
+             
+           ) # mainPanel
+           
+  ), # Navbar 1, tabPanel
+  tabPanel("Navbar 2",
+           sidebarPanel(
+             tags$h3("Input:"),
+             textInput("a1", "Number:", ""),
+             textInput("a2", "age:", ""),
+             
+           ), # sidebarPanel
+           mainPanel(
+             h1("Header 1"),
+             
+             h4("Output 1"),
+             verbatimTextOutput("b1"),
+             
+           ) # mainPanel
+           
+  ),
   
-     # navbarPage
-  # fluidPage
-
+  tabPanel("Navbar 3", "This panel is intentionally left blank")
+  
+) # navbarPage
+) # fluidPage
   
   # Define server function  
   server <- function(input, output) {
     
     output$txtout <- renderText({
       paste( input$txt1, input$txt2, sep = " " )
+    })
+    output$b1 <- renderText({
+      paste( input$a1, input$a2, sep = " " )
     })
   } # server
   
