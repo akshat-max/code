@@ -26,7 +26,7 @@ ui <- fluidPage(
                   label = "Number of bins:",
                   min = 1,
                   max = 50,
-                  value = 30)
+                  value = 10)
       
     ),
     
@@ -50,7 +50,7 @@ server <- function(input, output) {
     x    <- na.omit(x)
     bins <- seq(min(x), max(x), length.out = input$bins + 1)
     
-    hist(x, breaks = bins, col = "#75AADB", border = "black",
+    hist(x, breaks = bins, col = "red", border = "black",
          xlab = "Ozone level",
          main = "Histogram of Ozone level")
     
